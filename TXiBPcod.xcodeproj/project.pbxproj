@@ -13,6 +13,14 @@
 		CE349EB8259CE06800647807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE349EB6259CE06800647807 /* Main.storyboard */; };
 		CE349EBA259CE06B00647807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE349EB9259CE06B00647807 /* Assets.xcassets */; };
 		CE349EBD259CE06B00647807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE349EBB259CE06B00647807 /* LaunchScreen.storyboard */; };
+		CE349ECB259CF58900647807 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE349EC9259CF58900647807 /* TableViewCell.swift */; };
+		CE349ECC259CF58900647807 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE349ECA259CF58900647807 /* TableViewCell.xib */; };
+		CE349ED1259D1AE100647807 /* NewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE349ED0259D1AE100647807 /* NewsVC.swift */; };
+		CE349ED9259D3B8B00647807 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE349ED8259D3B8B00647807 /* NetworkService.swift */; };
+		CE349EDC259D485F00647807 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE349EDB259D485F00647807 /* NewsModel.swift */; };
+		CE349EE425A3631C00647807 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE349EE325A3631C00647807 /* NetworkDataFetcher.swift */; };
+		CE349EEE25A65DDF00647807 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE349EED25A65DDF00647807 /* Extensions.swift */; };
+		CE86C6C625D2C0E6004B00EF /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86C6C525D2C0E6004B00EF /* CountryPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +32,14 @@
 		CE349EB9259CE06B00647807 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE349EBC259CE06B00647807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE349EBE259CE06B00647807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE349EC9259CF58900647807 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		CE349ECA259CF58900647807 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		CE349ED0259D1AE100647807 /* NewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVC.swift; sourceTree = "<group>"; };
+		CE349ED8259D3B8B00647807 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CE349EDB259D485F00647807 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		CE349EE325A3631C00647807 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
+		CE349EED25A65DDF00647807 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CE86C6C525D2C0E6004B00EF /* CountryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +75,15 @@
 				CE349EB0259CE06800647807 /* AppDelegate.swift */,
 				CE349EB2259CE06800647807 /* SceneDelegate.swift */,
 				CE349EB4259CE06800647807 /* ViewController.swift */,
+				CE349ED0259D1AE100647807 /* NewsVC.swift */,
+				CE86C6C525D2C0E6004B00EF /* CountryPickerViewController.swift */,
+				CE349ED8259D3B8B00647807 /* NetworkService.swift */,
+				CE349EE325A3631C00647807 /* NetworkDataFetcher.swift */,
+				CE349EDB259D485F00647807 /* NewsModel.swift */,
+				CE349EC9259CF58900647807 /* TableViewCell.swift */,
 				CE349EB6259CE06800647807 /* Main.storyboard */,
+				CE349ECA259CF58900647807 /* TableViewCell.xib */,
+				CE349EED25A65DDF00647807 /* Extensions.swift */,
 				CE349EB9259CE06B00647807 /* Assets.xcassets */,
 				CE349EBB259CE06B00647807 /* LaunchScreen.storyboard */,
 				CE349EBE259CE06B00647807 /* Info.plist */,
@@ -125,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE349EBD259CE06B00647807 /* LaunchScreen.storyboard in Resources */,
+				CE349ECC259CF58900647807 /* TableViewCell.xib in Resources */,
 				CE349EBA259CE06B00647807 /* Assets.xcassets in Resources */,
 				CE349EB8259CE06800647807 /* Main.storyboard in Resources */,
 			);
@@ -137,9 +162,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE349EDC259D485F00647807 /* NewsModel.swift in Sources */,
 				CE349EB5259CE06800647807 /* ViewController.swift in Sources */,
+				CE349ECB259CF58900647807 /* TableViewCell.swift in Sources */,
 				CE349EB1259CE06800647807 /* AppDelegate.swift in Sources */,
 				CE349EB3259CE06800647807 /* SceneDelegate.swift in Sources */,
+				CE349ED9259D3B8B00647807 /* NetworkService.swift in Sources */,
+				CE349EE425A3631C00647807 /* NetworkDataFetcher.swift in Sources */,
+				CE349ED1259D1AE100647807 /* NewsVC.swift in Sources */,
+				CE349EEE25A65DDF00647807 /* Extensions.swift in Sources */,
+				CE86C6C625D2C0E6004B00EF /* CountryPickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

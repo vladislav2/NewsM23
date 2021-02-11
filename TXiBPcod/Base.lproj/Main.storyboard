@@ -1,24 +1,200 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fdZ-Q6-E4E">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TXiBPcod" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="OhR-my-UiE">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8HH-JQ-PPx">
+                                <rect key="frame" x="20" y="152" width="374" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3QB-WL-z5X">
+                                        <rect key="frame" x="0.0" y="0.0" width="183" height="30"/>
+                                        <state key="normal" title="Category: All">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="countryButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ggH-3w-y2L"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7Z-40-hC3">
+                                        <rect key="frame" x="191" y="0.0" width="183" height="30"/>
+                                        <state key="normal" title="Country: ua">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="countryButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TzM-UD-ncQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lnC-XP-KgW">
+                                <rect key="frame" x="16" y="190" width="382" height="672"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="8JZ-Ma-x6v" customClass="TableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="382" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8JZ-Ma-x6v" id="Q2Z-gY-Sds">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="uGn-2J-dWK" kind="show" identifier="detailNews" id="ROU-1u-0Mm"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lnC-XP-KgW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="3Fb-bD-qa3"/>
+                            <constraint firstItem="lnC-XP-KgW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-16" id="4NS-0D-cPa"/>
+                            <constraint firstItem="8HH-JQ-PPx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="AxG-RF-RQO"/>
+                            <constraint firstItem="OhR-my-UiE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DLQ-pa-phv"/>
+                            <constraint firstItem="lnC-XP-KgW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="GvM-xx-Hje"/>
+                            <constraint firstItem="8HH-JQ-PPx" firstAttribute="top" secondItem="OhR-my-UiE" secondAttribute="bottom" constant="8" id="QMU-bW-ff3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8HH-JQ-PPx" secondAttribute="trailing" constant="20" id="U4e-dU-PYO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OhR-my-UiE" secondAttribute="trailing" id="XGw-8T-M5P"/>
+                            <constraint firstItem="OhR-my-UiE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bhP-fn-QJR"/>
+                            <constraint firstItem="lnC-XP-KgW" firstAttribute="top" secondItem="8HH-JQ-PPx" secondAttribute="bottom" constant="8" id="xJZ-p4-GcV"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="0wJ-MZ-nem">
+                        <barButtonItem key="rightBarButtonItem" image="option" catalog="system" id="fdb-Qc-ryY"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="categoryPickerButton" destination="3QB-WL-z5X" id="ZKt-pt-u30"/>
+                        <outlet property="countryPickerButton" destination="j7Z-40-hC3" id="dj3-ux-4tg"/>
+                        <outlet property="rightBarItem" destination="fdb-Qc-ryY" id="S7N-SG-67t"/>
+                        <outlet property="searchBar" destination="OhR-my-UiE" id="kZu-Rr-nVZ"/>
+                        <outlet property="tableView" destination="lnC-XP-KgW" id="mjc-ya-B9o"/>
+                        <segue destination="yM6-8C-BGt" kind="popoverPresentation" identifier="countryPicker" popoverAnchorView="j7Z-40-hC3" id="mW9-qP-FEO">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1050.7246376811595" y="71.651785714285708"/>
+        </scene>
+        <!--NewsVC-->
+        <scene sceneID="mMQ-CN-7s6">
+            <objects>
+                <viewController id="uGn-2J-dWK" customClass="NewsVC" customModule="TXiBPcod" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O9w-TV-6Vq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1xV-Lq-Cq8">
+                                <rect key="frame" x="0.0" y="88" width="414" height="4"/>
+                            </progressView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8LZ-0u-1jB">
+                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xqv-M8-aM1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8LZ-0u-1jB" firstAttribute="leading" secondItem="xqv-M8-aM1" secondAttribute="leading" id="OXw-Nk-Yy0"/>
+                            <constraint firstItem="xqv-M8-aM1" firstAttribute="bottom" secondItem="8LZ-0u-1jB" secondAttribute="bottom" id="QMf-ha-T8h"/>
+                            <constraint firstItem="1xV-Lq-Cq8" firstAttribute="top" secondItem="xqv-M8-aM1" secondAttribute="top" id="SFD-iL-XeI"/>
+                            <constraint firstItem="8LZ-0u-1jB" firstAttribute="top" secondItem="1xV-Lq-Cq8" secondAttribute="bottom" id="aTe-0Z-agG"/>
+                            <constraint firstItem="xqv-M8-aM1" firstAttribute="trailing" secondItem="1xV-Lq-Cq8" secondAttribute="trailing" id="mEN-QH-agk"/>
+                            <constraint firstItem="1xV-Lq-Cq8" firstAttribute="leading" secondItem="xqv-M8-aM1" secondAttribute="leading" id="uOV-2L-Nbe"/>
+                            <constraint firstItem="xqv-M8-aM1" firstAttribute="trailing" secondItem="8LZ-0u-1jB" secondAttribute="trailing" id="wuY-Rf-QU2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="yLH-0b-mIs"/>
+                    <connections>
+                        <outlet property="newsWebView" destination="8LZ-0u-1jB" id="CbX-h6-hb2"/>
+                        <outlet property="progressView" destination="1xV-Lq-Cq8" id="kON-ED-1dr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L5d-xJ-dKt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1960.8695652173915" y="71.651785714285708"/>
+        </scene>
+        <!--Country Picker View Controller-->
+        <scene sceneID="Lex-cB-Sjh">
+            <objects>
+                <viewController storyboardIdentifier="countryPicker" id="yM6-8C-BGt" customClass="CountryPickerViewController" customModule="TXiBPcod" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ACp-4b-rkv">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAo-US-buH">
+                                <rect key="frame" x="16" y="16" width="168" height="218"/>
+                            </pickerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dVQ-DT-hOl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dVQ-DT-hOl" firstAttribute="trailing" secondItem="eAo-US-buH" secondAttribute="trailing" constant="16" id="9N3-tb-iPg"/>
+                            <constraint firstItem="dVQ-DT-hOl" firstAttribute="bottom" secondItem="eAo-US-buH" secondAttribute="bottom" constant="16" id="TIJ-1t-CY3"/>
+                            <constraint firstItem="eAo-US-buH" firstAttribute="leading" secondItem="dVQ-DT-hOl" secondAttribute="leading" constant="16" id="gaP-Ih-Yjn"/>
+                            <constraint firstItem="eAo-US-buH" firstAttribute="top" secondItem="ACp-4b-rkv" secondAttribute="top" constant="16" id="xsr-Zg-wNh"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="250"/>
+                    <connections>
+                        <outlet property="countryPicker" destination="eAo-US-buH" id="sDC-vH-oeh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="40W-AS-yBa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1051" y="534"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EYF-ZK-iE6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fdZ-Q6-E4E" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qM9-60-oxv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aye-Ne-iRh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MEY-AR-Bs5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140.57971014492756" y="71.651785714285708"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="option" catalog="system" width="128" height="106"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
