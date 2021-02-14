@@ -9,10 +9,22 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
-  @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var sourceLabel: UILabel!
-  @IBOutlet weak var authorLabel: UILabel!
-  @IBOutlet weak var newsImage: UIImageView!
-  @IBOutlet weak var descriptionLabel: UILabel!
-    
+  @IBOutlet private weak var titleLabel: UILabel!
+  @IBOutlet private weak var sourceLabel: UILabel!
+  @IBOutlet private weak var authorLabel: UILabel!
+  @IBOutlet private weak var newsImage: UIImageView!
+  @IBOutlet private weak var descriptionLabel: UILabel!
+  
+  func setData(data: Any?) {
+    if let article = data as? Article {
+      titleLabel.text = article.title
+      sourceLabel.text = article.source?.name
+      authorLabel.text = article.author
+      descriptionLabel.text = article.description
+      if let urlToImg = URL(string: article.urlToImage ?? "") {
+        newsImage.load(url: urlToImg)
+      }
+    }
+  }
 }
+

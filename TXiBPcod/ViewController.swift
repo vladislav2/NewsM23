@@ -7,7 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIPopoverPresentationControllerDelegate, PickedValueTransfer {
+protocol PickedValueTransfer: class {
+  func pickerDataTransfer(value: String, tag: Int)
+}
+
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate{
   
   private var networkService = NetworkDataFetcher()
   private var category: String = "" {
@@ -23,7 +27,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
   private var isLoadingNews = true
   private var totalResults = 0
   private var page = 1
-  private var tableIndex = 0
   private var newsArray = [Article]()
   
   private var timer: Timer?
@@ -39,11 +42,11 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     return refreshControl
   }()
   
-  @IBOutlet weak var categoryPickerButton: UIButton!
-  @IBOutlet weak var countryPickerButton: UIButton!
-  @IBOutlet weak var rightBarItem: UIBarButtonItem!
-  @IBOutlet weak var searchBar: UISearchBar!
-  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet private weak var categoryPickerButton: UIButton!
+  @IBOutlet private weak var countryPickerButton: UIButton!
+  @IBOutlet private weak var rightBarItem: UIBarButtonItem!
+  @IBOutlet private weak var searchBar: UISearchBar!
+  @IBOutlet private weak var tableView: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -53,7 +56,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     tableView.refreshControl = refreshControl
     tableView.delegate = self
     tableView.dataSource = self
-    tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+    tableView.rowHeight = 128
+    //tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
   }
   
   private func setupSpinner() {
@@ -72,8 +76,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         //self?.tableView.tableFooterView?.isHidden = true
         self?.tableView.reloadData()
         if fetchedNews.articles.count < 20 {
+          self?.page = 1
           self?.isLoadingNews = false
-          
           return
         }
         self?.isLoadingNews = true
@@ -81,12 +85,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     }
     //tableView.tableFooterView?.isHidden = true
   }
-  private func changeCategoryOrCountry() {
-    isLoadingNews = true
-    page = 1
-    newsArray = []
-    getNews()
-  }
+  
   func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
   }
@@ -114,18 +113,17 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     }
   }
   
-  internal func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+  func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
     return .none
   }
   
   // MARK: - Navigation
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "detailNews" {
-      guard let detailVC = segue.destination as? NewsVC else { return }
-      guard let articleUrl = newsArray[tableIndex].url else { return }
-      detailVC.articleURL = articleUrl
-    }
+    guard let detailVC = segue.destination as? NewsVC else { return }
+    guard let index = tableView.indexPathForSelectedRow?.row else { return }
+    guard let articleUrl = newsArray[index].url else { return }
+    detailVC.articleURL = articleUrl
     if segue.identifier == "countryPicker" {
       guard let buttonPressed = sender as? UIButton else { return }
       let tag = buttonPressed.tag
@@ -175,11 +173,7 @@ extension ViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? TableViewCell {
-      cell.titleLabel.text = newsArray[indexPath.row].title
-      cell.authorLabel.text = newsArray[indexPath.row].author
-      cell.descriptionLabel.text = newsArray[indexPath.row].description
-      guard let urlToImg = URL(string: newsArray[indexPath.row].urlToImage ?? "") else { return UITableViewCell() }
-      cell.newsImage.load(url: urlToImg)
+      cell.setData(data: newsArray[indexPath.row])
       return cell
     }
     return UITableViewCell()
@@ -204,8 +198,15 @@ extension ViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableIndex = indexPath.row
     tableView.deselectRow(at: indexPath, animated: true)
-    performSegue(withIdentifier: "detailNews", sender: nil)
+  }
+}
+
+extension ViewController: PickedValueTransfer {
+  private func changeCategoryOrCountry() {
+    isLoadingNews = true
+    page = 1
+    newsArray = []
+    getNews()
   }
 }

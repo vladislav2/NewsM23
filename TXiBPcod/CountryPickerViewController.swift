@@ -79,7 +79,3 @@ class CountryPickerViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
   }
 }
-
-protocol PickedValueTransfer: class {
-  func pickerDataTransfer(value: String, tag: Int)
-}
