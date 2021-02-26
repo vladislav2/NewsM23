@@ -21,10 +21,8 @@ class CountryPickerViewController: UIViewController, UIPickerViewDelegate, UIPic
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    print(tagButton)
     countryPicker.delegate = self
     countryPicker.dataSource = self
-    
     if tagButton == 0 {
       selectedValue = "All"
     }
@@ -32,8 +30,6 @@ class CountryPickerViewController: UIViewController, UIPickerViewDelegate, UIPic
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-    print("Tag = \(tagButton)------------")
-    print("Value = \(selectedValue)---------------")
     delegate?.pickerDataTransfer(value: selectedValue, tag: tagButton)
   }
   
@@ -71,9 +67,7 @@ class CountryPickerViewController: UIViewController, UIPickerViewDelegate, UIPic
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     switch tagButton {
     case 0: selectedValue = categoryArray[row]
-      print("Category = \(selectedValue)")
     case 1: selectedValue = countryArray[row]
-      print("Country = \(selectedValue)")
     default:
       selectedValue = tagButton == 0 ? "All" : "ua"
     }
